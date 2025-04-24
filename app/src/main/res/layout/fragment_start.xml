@@ -1,0 +1,114 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+    <!-- Título de Bienvenida -->
+    <TextView
+        android:id="@+id/welcomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/principal"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/motivationalMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_inicio"
+        android:textSize="16sp"
+        android:textColor="@color/negro_gris"
+        android:gravity="center"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Subtítulo -->
+    <TextView
+        android:id="@+id/welcomeSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/explora_nuestras_opciones"
+        android:textSize="16sp"
+        android:textColor="@color/negro"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp" />
+
+    <!-- Opciones de la Aplicación -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:alignmentMode="alignMargins"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:columnOrderPreserved="false">
+
+        <!-- Opción 1 -->
+        <LinearLayout
+            android:id="@+id/buttonShop"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:background="@drawable/option_background"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/shopping_cart_icon"
+                app:tint="@color/principal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tienda"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/principal"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Opción 2 -->
+        <LinearLayout
+            android:id="@+id/buttonProfile"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:background="@drawable/option_background"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/user_icon"
+                android:tint="@color/principal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfil"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/principal"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Agrega más opciones según sea necesario -->
+
+    </GridLayout>
+</LinearLayout>

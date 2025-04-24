@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Imagen del Producto -->
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/product" />
+
+        <!-- Contenido del Producto -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/productTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shampoo Sólid - Cabello Secreto"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/principal"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/productAvailability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disponible"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/principal"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="|"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/productCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cosméticos"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/darker_gray"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/productPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$56000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/productDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disfruta de una experiencia de cuidado corporal única con nuestro jabón hidratante 'Seeds', elaborado con ingredientes naturales y presentado en un innovador empaque biodegradable. Este jabón no solo cuida tu piel con su fórmula suave y nutritiva, sino que también respeta el medio ambiente con su envase compostable que puede plantarse para dar vida a una hermosa planta de albahaca. Hidratación profunda y natural • Empaque ecológico y biodegradable"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Incrementador de Cantidad -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    android:id="@+id/decrementButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="-"
+                    android:textSize="24sp"
+                    android:backgroundTint="@color/principal"
+                    android:textColor="@android:color/white"
+                    android:elevation="2dp"
+                    android:padding="0dp"/>
+
+                <TextView
+                    android:id="@+id/quantityText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"/>
+
+                <Button
+                    android:id="@+id/incrementButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="+"
+                    android:textSize="24sp"
+                    android:backgroundTint="@color/principal"
+                    android:textColor="@android:color/white"
+                    android:elevation="2dp"
+                    android:padding="0dp"/>
+            </LinearLayout>
+
+            <!-- Botón Agregar al Carrito -->
+            <Button
+                android:id="@+id/addToCartButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar al Carrito"
+                android:textSize="18sp"
+                android:backgroundTint="@color/principal"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

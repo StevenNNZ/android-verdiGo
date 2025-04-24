@@ -1,0 +1,6 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:statusBarColor">@color/principal</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

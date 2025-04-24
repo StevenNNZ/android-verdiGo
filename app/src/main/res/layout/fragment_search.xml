@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <!-- Categorías Fragment -->
+    <FrameLayout
+        android:id="@+id/categories_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Fondo con texto -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/fondo_search"> <!-- Fondo de imagen -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="bottom|end"
+            android:fontFamily="@font/montserrat_extrabold"
+            android:shadowColor="@color/principal"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="@string/antojos"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        android:layout_marginVertical="5dp"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/search_icon"
+        app:endIconTint="@color/principal"
+        app:boxStrokeColor="@color/gris">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/buscar_productos"
+            android:textColor="@color/negro"
+            android:textColorHint="@color/grisClaro"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Texto y botón Ver más -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/te_puede_interesar"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ver_m_s"
+            android:backgroundTint="@color/principal"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- Lista de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_products"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:clipToPadding="false" />
+
+    <!-- Botón Más -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/m_s"
+        android:backgroundTint="@color/principal"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp" />
+    </LinearLayout>
+</LinearLayout>

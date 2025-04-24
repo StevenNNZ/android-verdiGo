@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Fondo blanco -->
+    <solid android:color="@color/blanco" />
+
+    <!-- Borde (stroke) del color principal -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/principal" />
+</shape>

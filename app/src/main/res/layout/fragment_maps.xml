@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/location_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ubicación"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/principal" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/location_label"
+        android:layout_marginTop="8dp" />
+
+    <!-- Ubicación específica -->
+    <TextView
+        android:id="@+id/specific_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/map"
+        android:text="Av. 68 #68b-10, Bogotá"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/physical_stores_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/specific_location"
+        android:text="Tiendas físicas"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/principal"
+        android:layout_marginTop="16dp" />
+
+    <ListView
+        android:id="@+id/locations_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/physical_stores_label"
+        android:layout_marginTop="8dp"/>
+</RelativeLayout>

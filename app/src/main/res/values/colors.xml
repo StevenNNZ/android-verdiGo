@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="negro">#FF000000</color>
+    <color name="blanco">#FFFFFFFF</color>
+    <color name="principal_transparente">#B375D511</color>
+    <color name="principal">#70DF00</color>
+    <color name="txtPrincipal">#73D610</color>
+    <color name="cardPrincipal">#70DF00</color>
+    <color name="txtCard">#494949</color>
+
+    <color name="gris">#D3D3D3</color>
+    <color name="grisClaro">#A9A9A9</color>
+
+    <color name="grisTxt">#3F3F3F</color>
+    <color name="negro_gris">#aaa</color>
+
 </resources>

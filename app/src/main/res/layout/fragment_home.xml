@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menos_huella"
+        android:gravity="start"
+        android:textSize="30sp"
+        android:paddingStart="30dp"
+        android:layout_marginBottom="-10dp"
+        android:paddingEnd="0dp"
+        android:textColor="@color/txtPrincipal"
+        android:textStyle="bold"
+         />
+
+    <TextView
+        android:id="@+id/title_futuro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/m_s_futuro"
+        android:textSize="30sp"
+        android:paddingStart="130dp"
+        android:paddingEnd="0dp"
+        android:gravity="start"
+        android:textColor="@color/txtPrincipal"
+        android:textStyle="bold"
+        />
+
+    <FrameLayout
+        android:id="@+id/categories_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_products"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

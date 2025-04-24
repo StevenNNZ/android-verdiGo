@@ -1,0 +1,63 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Botones de categorías -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Varios"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/principal"
+            android:textColor="@color/blanco"
+            android:paddingHorizontal="12dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alimentos"
+            android:layout_marginEnd="8dp"
+            app:strokeColor="@color/principal"
+            app:strokeWidth="2dp"
+            android:backgroundTint="@color/blanco"
+            android:textColor="@color/principal"
+            android:paddingHorizontal="12dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cosméticos"
+            android:layout_marginEnd="8dp"
+            app:strokeColor="@color/principal"
+            app:strokeWidth="2dp"
+            android:backgroundTint="@color/blanco"
+            android:textColor="@color/principal"
+            android:paddingHorizontal="12dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moda"
+            android:layout_marginEnd="8dp"
+            app:strokeColor="@color/principal"
+            app:strokeWidth="2dp"
+            android:backgroundTint="@color/blanco"
+            android:textColor="@color/principal"
+            android:paddingHorizontal="12dp"
+            android:textSize="16sp" />
+
+        <!-- Agrega más botones según sea necesario -->
+
+    </LinearLayout>
+</HorizontalScrollView>

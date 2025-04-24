@@ -13,7 +13,7 @@
         android:theme="@style/Theme.VerdiGo"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.activities.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.activities.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activities.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activities.PasswordRecoveryActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <!--  Google maps-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDbIzl2PWxwqAK7aJZh0go2DEMj5KboMyE" />
+
     </application>
 
 </manifest>
