@@ -7,9 +7,19 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.clase_nativas.utils.ToastAlert
 import com.example.verdigo.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInApi
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.gson.Gson
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -17,24 +27,37 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var editTextPassword: EditText
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var loginButton: Button
+    private lateinit var loginButtonGoogle: Button
+
     private lateinit var forgotPasswordTextView: TextView
     private lateinit var signUpButton: Button
+
+    private lateinit var mGoogleSignInClient:GoogleSignInClient
+    private val RC_SIGN_IN = 123
+    private val TAG = "GoogleSignIn"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .requestProfile()
+            .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
         initializeViews()
         setListeners()
     }
 
     private fun initializeViews() {
-
         //Inicializar las variables
         sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE)
         editTextEmail = findViewById(R.id.emailEditText)
         editTextPassword = findViewById(R.id.passwordEditText)
         loginButton = findViewById(R.id.loginButton)
+        loginButtonGoogle = findViewById(R.id.btnGoogleLogin)
         forgotPasswordTextView = findViewById(R.id.forgotPasswordTextView)
         signUpButton = findViewById(R.id.signUpButton)
     }
@@ -50,6 +73,10 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        loginButtonGoogle.setOnClickListener {
+            signIn()
+        }
+
         // Redirigimos al formulario de recuperar contraseña
         forgotPasswordTextView.setOnClickListener {
             val intent = Intent(this, PasswordRecoveryActivity::class.java)
@@ -60,6 +87,62 @@ class LoginActivity : AppCompatActivity() {
         signUpButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun signIn(){
+        val signInIntent = mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == RC_SIGN_IN){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        }
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>){
+        try{
+            val account = completedTask.getResult(ApiException::class.java)
+
+            val gson = Gson()
+            val json = gson.toJson(account)
+
+            Log.d("LoginActivity account", "Account JSON: $json")
+            Log.d("GoogleSignIn", "ID: ${account.id}")
+            Log.d("GoogleSignIn", "Email: ${account.email}")
+            Log.d("GoogleSignIn", "Display Name: ${account.displayName}")
+            Log.d("GoogleSignIn", "Given Name (Nombre): ${account.givenName}")
+            Log.d("GoogleSignIn", "Family Name (Apellido): ${account.familyName}")
+            Log.d("GoogleSignIn", "Photo URL: ${account.photoUrl}")
+            Log.d("GoogleSignIn", "ID Token: ${account.idToken}")
+
+            //Inicio de sesión exitoso
+            ToastAlert.show(this,"Bienvenid@ ${account.givenName} ${account.familyName}")
+
+            //Guardamos los datos personales
+            val editor = sharedPreferences.edit()
+            editor.putString("name", account.givenName.toString().trim())
+            editor.putString("lastNames", account.familyName.toString().trim())
+            editor.putString("email", account.email.toString().trim())
+            editor.apply()
+
+            intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("USER_EMAIL", account.email)
+            intent.putExtra("USER_NAME", account.displayName)
+            startActivity(intent)
+
+        }catch (e:ApiException){
+
+            val mensaje = when(e.statusCode){
+                10 -> "Error de configuración. Verifica la huella SHA-1"
+                12500 -> "Error de conexión. Verifica tu conexión a internet"
+                12501 -> "Inicio de sesión cancelado por el usuario"
+                else -> "Error al iniciar sesión (código ${e.statusCode})"
+            }
         }
     }
 

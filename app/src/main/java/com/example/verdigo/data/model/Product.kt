@@ -6,5 +6,6 @@ data class Product(
     val imageResId: Int,
     val category: String,
     val rating: Float,
+    val price: Double,
     val description: String
 )

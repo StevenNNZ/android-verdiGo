@@ -41,6 +41,7 @@
         android:layout_margin="16dp">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -56,7 +57,7 @@
         app:boxStrokeColor="@color/gris">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/searchFavorite"
+            android:id="@+id/searchProductFilter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/buscar_productos"
@@ -96,14 +97,5 @@
         android:layout_height="wrap_content"
         android:paddingVertical="8dp"
         android:clipToPadding="false" />
-
-    <!-- Botón Más -->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/m_s"
-        android:backgroundTint="@color/principal"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="16dp" />
     </LinearLayout>
 </LinearLayout>

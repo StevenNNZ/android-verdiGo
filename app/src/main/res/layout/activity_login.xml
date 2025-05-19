@@ -111,6 +111,22 @@
                 android:textStyle="italic" />
 
             <!-- Crear cuenta -->
+            <Button
+                android:id="@+id/btnGoogleLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blanco"
+                android:text="Ingresa con google"
+                android:textColor="@color/principal"
+                android:textSize="24sp"
+                app:cornerRadius="15dp"
+                app:icon="@drawable/icon_google"
+                app:iconSize="35sp"
+                app:iconTint="@null"
+                android:layout_marginBottom="16dp"
+                app:strokeColor="@color/blanco"
+                app:strokeWidth="3dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -12,16 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.verdigo.R
 import com.example.verdigo.data.model.Product
+import com.example.verdigo.data.singleton.FavoritesManager
 import com.example.verdigo.presentation.fragments.adapters.ProductsAdapter
+import com.google.gson.Gson
 
 class FavoritesFragment: Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var recyclerView: RecyclerView
     private lateinit var welcomeTitle: TextView
-    private val products = listOf(
-        Product(1, "Shampoo Sólid", R.drawable.product, "Cosméticos", 4.0f, "Descripción del producto"),
-        Product(2, "Shampoo Sólid", R.drawable.product, "Cosméticos", 4.0f, "Descripción del producto")
-    )
+    private lateinit var productsAdapter: ProductsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,20 +29,24 @@ class FavoritesFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_favorites, container, false)
 
+
+        //Configuración del RecyclerView
+        recyclerView = view.findViewById(R.id.recycler_view_products)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        // Obtener productos favoritos del singleton
+        val favoriteProducts = FavoritesManager.getFavoriteProducts()
+        productsAdapter = ProductsAdapter(favoriteProducts) { product ->
+            redirectToProductDetail(product)
+        }
+        recyclerView.adapter = productsAdapter
+
         //Inicializar variables generadas
         sharedPreferences = requireContext().getSharedPreferences("UserData", MODE_PRIVATE)
         welcomeTitle = view.findViewById(R.id.title_welcome)
 
         //Asignamos el nombre del usuario
         welcomeTitle.text = getString(R.string.hola_de_nuevo, sharedPreferences.getString("name", ""))
-
-        //Configuración del RecyclerView
-        recyclerView = view.findViewById(R.id.recycler_view_products)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = ProductsAdapter(products) { product ->
-            redirectToProductDetail(product)
-        }
-        recyclerView.adapter = adapter
 
         //Configuración del AvatarFragment
         childFragmentManager.beginTransaction()
@@ -58,9 +61,26 @@ class FavoritesFragment: Fragment() {
         return view
     }
 
-    fun redirectToProductDetail(product: Product) {
-        val productDetailFragment = ProductDetailFragment()
+    override fun onResume() {
+        super.onResume()
+        val updatedFavorites = FavoritesManager.getFavoriteProducts()
+        productsAdapter = ProductsAdapter(updatedFavorites) { product ->
+            redirectToProductDetail(product)
+        }
+        recyclerView.adapter = productsAdapter
+    }
 
+    fun redirectToProductDetail(product: Product) {
+        // Guardamos el producto seleccionado como JSON
+        val prefs = requireContext().getSharedPreferences("SelectedProduct", MODE_PRIVATE)
+        val editor = prefs.edit()
+        val gson = Gson()
+        val productJson = gson.toJson(product)
+        editor.putString("selected_product", productJson)
+        editor.apply()
+
+        // Navegar al fragmento de detalle
+        val productDetailFragment = ProductDetailFragment()
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, productDetailFragment)
             .addToBackStack(null)

@@ -15,6 +15,7 @@ class HomeActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
         // Inicializamos variables
         buttonLogin = findViewById(R.id.loginButtonHome)
         buttonRegister = findViewById(R.id.signUpButtonHome)

@@ -22,8 +22,8 @@ class ProfileFragment : Fragment() {
     private lateinit var userNameTextView: TextView
     private lateinit var userDataTextView: TextView
     private val products = listOf(
-        Product(1, "Shampoo Sólid", R.drawable.product, "Cosméticos", 4.0f, "Descripción del producto"),
-        Product(2, "Shampoo Sólid", R.drawable.product, "Cosméticos", 4.0f, "Descripción del producto")
+        Product(1, "Shampoo Sólid", R.drawable.product, "Cosméticos", 4.0f, 20000.0, "Descripción del producto"),
+        Product(2, "Shampoo Sólid", R.drawable.product, "Cosméticos", 4.0f, 10000.0,"Descripción del producto")
     )
 
     override fun onCreateView(
